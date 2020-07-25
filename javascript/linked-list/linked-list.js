@@ -1,36 +1,37 @@
 export class LinkedList {
 
-  push(val) {
-    const node = { value: val, next: null }
-    if (!this.head) {
-      this.head = node;
-    } else {
-      let current = this.head;
-      while(current.next) {
-        current = current.next;
-      }
-      current.next = node;
-    }
-    console.log(node)
+  constructor() {
+    this.list = [];
+  }
+
+  push(value) {
+    this.list.push(value);
   }
 
   pop() {
-    
+    if (this.list.length > 0) {
+      return this.list.pop();
+    }
   }
 
   shift() {
-
+    if (this.list.length > 0) {
+      return this.list.shift();
+    }
   }
 
-  unshift() {
-
+  unshift(value) {
+    this.list.unshift(value);
   }
 
-  delete() {
-
+  delete(value) {
+    let index = this.list.indexOf(value)
+    if (index >= 0) {
+      this.list.splice(index, 1)
+    }
   }
 
   count() {
-
+    return this.list.length;
   }
 }
