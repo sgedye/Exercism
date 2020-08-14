@@ -1,16 +1,18 @@
-const dnaToRna = { 'G' : 'C', 'C' : 'G', 'T' : 'A', 'A' : 'U' }
-type DNA = 'G' | 'C' | 'T' | 'A'
+const dnaToRna = { 'G': 'C', 'C': 'G', 'T': 'A', 'A': 'U' };
+type DNA = 'G' | 'C' | 'T' | 'A';
 
 class Transcriptor {
-    toRna( dna: DNA | DNA[] ): string {
-        if (dna.length === 1) {
-            return dnaToRna[dna]
+    toRna(dna: string): string {
+        let rna = '';
+        for (const char of dna) {
+            if ('GCTA'.includes(char)) {
+                rna += dnaToRna[char as DNA];
+            } else {
+                throw new Error("Invalid input DNA.");
+            }
         }
-        let rna = ''
-        for (let i=0; i<dna.length; i++) {
-            rna += dnaToRna[dna[i]]
-        }   return rna
+        return rna;
     }
 }
 
-export default Transcriptor
+export default Transcriptor;
